@@ -1,43 +1,71 @@
-# Choose the model. Keep the context.
+# Choose the model. Keep the identity.
 
-**Minimal ReloLayer ChatLab:** a runnable experiment in builder-controlled AI behavior.
+A small, runnable experiment in **builder-controlled AI** from [ReloLayer](https://relolayer.com).
 
-The point isn't to make every model respond identically. It's to choose the model while retaining the same externally defined character and **visible** conversation history.
+I wanted more control over four things in an AI assistant:
 
-## Quick start
+- **Identity:** who it is, what it remembers, and how it behaves.
+- **Intelligence:** which model's strengths to use for creative writing, technical reasoning, coding, or conversation.
+- **Output:** whether I need an imaginative story, a rigorous critique, a clear explanation, or a concise answer.
+- **Cost:** whether a task justifies an expensive model or a cheaper one.
 
-Requires Python 3.10+ and an [OpenRouter API key](https://openrouter.ai/settings/keys). It uses only the Python standard library.
+The idea is simple: **change the reasoning engine ("brain") without rebuilding the assistant or losing its defined identity and visible conversation.**
 
-1. Copy `.env.example` to `.env`; insert your own OpenRouter key. Never commit or share your key.
-2. Review `identity/persona.md`, `voice.md`, `boundaries.md`, and `memory.md`. Change them if you like.
-3. Run `python3 chatlab.py` (Windows: `py chatlab.py`).
-4. Talk to Rowan, the **generic public test character**.
-5. Run `/model provider/model-id` to switch to an exact model ID from [OpenRouter's model catalog](https://openrouter.ai/models). Continue the same conversation to compare behavior.
+For example, while developing a science-fiction story, I might try one model for imaginative dialogue, another to critique plot logic, and a less expensive one for prose editing. These are possible uses, not proven rankings of those models' abilities.
 
-Commands: `/model` to inspect the current model, `/stats` for API-reported usage, `/quit` to exit.
+This minimal ChatLab demonstrates **manual model selection and visible-context portability**. It does not yet automate routing, force a particular writing style, or optimize spending.
 
-For an offline request-shape test without a key, run `python3 chatlab.py --dry-run`, enter a prompt, then `/quit`. To run unit tests:
+## Try it yourself
+
+Requirements: Python 3.10+ and an [OpenRouter API key](https://openrouter.ai/settings/keys). No third-party Python packages are required.
+
+1. Copy `.env.example` to `.env` and replace the placeholder with your own API key. **Never commit or share your key.**
+2. Review the four editable files in `identity/`: `persona.md`, `voice.md`, `boundaries.md`, and `memory.md`.
+3. From the repository root, run `python3 chatlab.py` (Windows: `py chatlab.py`).
+4. Chat with **Rowan**, the example character. The conversation is saved locally.
+5. Type `/model provider/model-id`, choosing an exact ID from [OpenRouter's catalog](https://openrouter.ai/models). Continue chatting with the same defined identity and saved conversation.
+
+Useful commands:
+
+| Command | Purpose |
+|---|---|
+| `/model` | Show the active model |
+| `/model provider/model-id` | Choose a different model for subsequent replies |
+| `/stats` | Show provider-reported usage data, when available |
+| `/quit` | End the session |
+
+To inspect request assembly without a key or network call:
+
+```bash
+python3 chatlab.py --dry-run
+```
+
+Run the six offline tests:
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
-The `openrouter/free` default is a provider-selected routing option **when available**—not a fixed model or stable comparison baseline. Check current model IDs and pricing before use.
+The example defaults to `openrouter/free` when available. That is a **provider-selected route**, not a fixed model or stable comparison baseline. Choose explicit model IDs for controlled comparisons and check current pricing.
 
-## What's portable?
+## What changes, and what doesn't
 
-Each request sends the four local Markdown files plus saved visible chat to the chosen model. The next model receives the same context, but **not** the old model's internal state, private provider memory, embeddings, or hypothetical subjective experience. Behavior, reliability, pricing, and applicable provider rules can change.
+The four Markdown files are supplied as context on each request, together with the saved **visible** conversation. Changing models does not transfer hidden model state, provider-side memory, or identical behavior. Different models may interpret the same instructions differently.
 
-Conversations are saved unencrypted to `.local/session.json`. The file is ignored by Git, but remains readable to local processes with access. Identity files and conversation content are transmitted through OpenRouter to selected inference routes; read provider privacy terms before entering anything private. This is a demo, **not** a secure personal data vault.
+Conversations are written unencrypted to `.local/session.json`, which is ignored by Git. Identity files and chat content are sent through OpenRouter to the selected inference route. Review provider privacy terms before sharing sensitive information.
 
-Other limitations: no automatic routing or budget enforcement; no transcript truncation, retrieval, memory promotion, or tools. Long conversations can exceed context windows. `/stats` displays usage metadata *if* the provider returned it; it does not calculate or cap costs. The example was tested offline; live API interoperability requires testing with your key.
+This is a teaching example, not a secure personal-data vault or production agent. It does **not** include automatic specialist routing, spending limits, conversation truncation, retrieval, memory promotion, or external tools. Long histories may exceed model context limits. The usage display does not calculate or cap costs.
 
-## Evidence and intent
+**Testing:** The example has passed six offline tests. Live OpenRouter interoperability still needs a real-key smoke test.
 
-`docs/method.md` and `evidence/` report limited findings from a separate, **single-character**, September 2026 blind pilot. These scores are **not** results from this public character, Rowan, nor from the separate Brixana demonstration in [the explainer video](https://youtu.be/eLk_ujkfhVM).
+## Field notes and evidence
 
-This teaching example is a simplified, fresh implementation based on the research architecture, not the original evaluation harness. Developed by one independent builder with extensive AI assistance for design, coding, testing, and critique.
+The project grew out of staged September 2026 experiments using DeepSeek, Kimi, and GLM with an externally defined character. In a focused blind pilot with **one human evaluator**, seven scoreable comparisons favored DeepSeek in five, Kimi in one, with one tie. The results apply only to that specific experiment; they are **not general model rankings**.
 
-**Choose the model. Control the cost. Shape the output.** The example demonstrates *manual choice*, not validated production cost savings.
+See [experiment methodology](docs/method.md) and [aggregate evidence](evidence/). Rowan is a separate teaching example. [The Brixana video](https://youtu.be/eLk_ujkfhVM) is a separate public demonstration, not footage of the scored pilot.
 
-No open-source license has been granted yet; publication and license terms will be reviewed before release.
+I built the software and experiment framework with extensive AI assistance for design, coding, testing, and critique. This is the work of one independent builder.
+
+**The models are instruments. I wanted to conduct.**
+
+No license is granted yet. License and public-release details will be decided before publication.

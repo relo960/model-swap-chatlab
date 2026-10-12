@@ -1,0 +1,10 @@
+flowchart LR
+  P[persona.md] --> S[System context]
+  V[voice.md] --> S
+  B[boundaries.md] --> S
+  M[memory.md] --> S
+  H[Visible conversation] --> R[Chat request]
+  S --> R
+  X[Chosen model] --> R
+  R --> O[Visible reply]
+  O --> H

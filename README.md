@@ -34,7 +34,7 @@ Other limitations: no automatic routing or budget enforcement; no transcript tru
 
 ## Evidence and intent
 
-`docs/method.md` and `evidence/` report limited findings from a separate, **private-character**, September 2026 blind pilot. These scores are **not** results from this public character, Rowan, nor from the separate Brixana demonstration in [the explainer video](https://youtu.be/eLk_ujkfhVM).
+`docs/method.md` and `evidence/` report limited findings from a separate, **single-character**, September 2026 blind pilot. These scores are **not** results from this public character, Rowan, nor from the separate Brixana demonstration in [the explainer video](https://youtu.be/eLk_ujkfhVM).
 
 This teaching example is a simplified, fresh implementation based on the research architecture, not the original evaluation harness. Developed by one independent builder with extensive AI assistance for design, coding, testing, and critique.
 

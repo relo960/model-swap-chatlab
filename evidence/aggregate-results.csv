@@ -1,2 +1,2 @@
 phase,evidence_type,primary_evaluator,planned_episodes,scored_episodes,deepseek_wins,kimi_wins,ties,unscorable,context
-Stage 3,blind human pairwise preference,one human,8,7,5,1,1,1,"Private-character head-to-head; one Kimi route failure; not Brixana results"
+Stage 3,blind human pairwise preference,one human,8,7,5,1,1,1,"Single-character head-to-head; one unscorable episode; not Brixana results"

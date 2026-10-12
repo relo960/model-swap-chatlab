@@ -10,7 +10,7 @@ Stages: (1) model screening; (2) reconstruction and forks across DeepSeek, Kimi,
 
 Evaluated dimensions included character fidelity, visible continuity, memory provenance, inference restraint, technical reasoning, register-switching, tool-output governance, and reliability.
 
-**Stage 3 observation:** one evaluator, eight planned episodes, seven scoreable; DeepSeek preferred in 5, Kimi in 1, tie in 1. One planned episode failed to yield a scoreable visible Kimi output.
+**Stage 3 observation:** one evaluator, eight planned episodes, seven scoreable; DeepSeek preferred in 5, Kimi in 1, tie in 1.
 
 Limitations: highly character-specific prompts and one evaluator; small nonrepresentative episode set; model route, inference parameters and provider may confound results; no general model rankings or significance claim. The complete private test material is not published. The generic public character is different from the tested private character and the separate Brixana demonstration.
 

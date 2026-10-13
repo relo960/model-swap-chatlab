@@ -13,7 +13,7 @@ The four Markdown files are editable instructions, not model weights or an autom
 
 1. Configure `.env` as described in the README, then run `python3 chatlab.py`.
 2. Ask: "Introduce yourself briefly. Then critique my plan to spend $2,000 automating a five-minute weekly task."
-3. Edit `voice.md`: change Rowan's Playfulness from 5/10 to 2/10, or request shorter, more technical answers.
+3. Edit `identity/voice.md`: change Rowan's Playfulness from 5/10 to 2/10, or request shorter, more technical answers.
 4. Run `python3 chatlab.py --session .local/new-voice.json`.
 5. Ask the same question. What changed? What remains recognizably Rowan?
 

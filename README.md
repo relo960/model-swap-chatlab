@@ -20,7 +20,7 @@ This minimal ChatLab demonstrates **manual model selection and visible-context p
 Requirements: Python 3.10+ and an [OpenRouter API key](https://openrouter.ai/settings/keys). No third-party Python packages are required.
 
 1. Copy `.env.example` to `.env` and replace the placeholder with your own API key. **Never commit or share your key.**
-2. Review the four editable files in `identity/`: `persona.md`, `voice.md`, `boundaries.md`, and `memory.md`.
+2. Explore the four editable files in `identity/`: `persona.md`, `voice.md`, `boundaries.md`, and `memory.md`. Follow [Make Rowan your own](CUSTOMIZE.md) for guided edits.
 3. From the repository root, run `python3 chatlab.py` (Windows: `py chatlab.py`).
 4. Chat with **Rowan**, the example character. The conversation is saved locally.
 5. Type `/model provider/model-id`, choosing an exact ID from [OpenRouter's catalog](https://openrouter.ai/models). Continue chatting with the same defined identity and saved conversation.
@@ -40,13 +40,17 @@ To inspect request assembly without a key or network call:
 python3 chatlab.py --dry-run
 ```
 
-Run the six offline tests:
+Run the offline tests:
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
 The example defaults to `openrouter/free` when available. That is a **provider-selected route**, not a fixed model or stable comparison baseline. Choose explicit model IDs for controlled comparisons and check current pricing.
+
+## Customize Rowan
+
+Rowan has recognizable interests, reasoning habits, a conversational voice, and rules for distinguishing facts from guesses. The four files make those traits editable. See [CUSTOMIZE.md](CUSTOMIZE.md) for five suggested comparison prompts and a same-context model-swap exercise.
 
 ## What changes, and what doesn't
 
@@ -60,7 +64,9 @@ This is a teaching example, not a secure personal-data vault or production agent
 
 ## Field notes and evidence
 
-The project grew out of staged September 2026 experiments using DeepSeek, Kimi, and GLM with an externally defined character. In a focused blind pilot with **one human evaluator**, seven scoreable comparisons favored DeepSeek in five, Kimi in one, with one tie. The results apply only to that specific experiment; they are **not general model rankings**.
+This project grew out of experiments exploring whether a consistent AI identity can remain recognizable when its underlying reasoning model changes. Different models showed meaningful differences in conversational style, judgment, and identity consistency. That illustrates the value of **model choice**, not which model is best today.
+
+The dated pilot comparisons and their limitations are preserved in the historical field notes, where they belong.
 
 See [experiment methodology](docs/method.md) and [aggregate evidence](evidence/). Rowan is a separate teaching example. [The Brixana video](https://youtu.be/eLk_ujkfhVM) is a separate public demonstration, not footage of the scored pilot.
 

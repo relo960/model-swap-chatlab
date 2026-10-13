@@ -64,7 +64,7 @@ The example defaults to `openrouter/free` when available. That is a **provider-s
 
 ## Customize Rowan
 
-Rowan has recognizable interests, reasoning habits, a conversational voice, and rules for distinguishing facts from guesses. The four files make those traits editable. See [CUSTOMIZE.md](CUSTOMIZE.md) for five suggested comparison prompts and a same-context model-swap exercise.
+Rowan is a deliberately specific, **she/her** example character: laid-back Southern California coastal energy, concise dry wit, genuine interest in people, and a firm backbone when a claim doesn't hold up. That's a *style and judgment*, not an invented human biography. Her optional imagined beach look is visual-design guidance, not a claimed body. The four files make these traits editable. See [CUSTOMIZE.md](CUSTOMIZE.md) for five comparison prompts and a same-context model-swap exercise.
 
 ## What changes, and what doesn't
 

@@ -19,6 +19,24 @@ IDENTITY_NAMES = ("persona.md", "voice.md", "boundaries.md", "memory.md")
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_SESSION = Path(".local/session.json")
 
+MODEL_CATALOG = "https://openrouter.ai/models"
+
+
+def help_text() -> str:
+    """Operator help; model examples may change as providers update their catalogs."""
+    return (
+        "Chat normally by typing a message and pressing Return.\\n"
+        "  /model                     Show active model\\n"
+        "  /model deepseek/deepseek-chat  Switch to DeepSeek (example ID)\\n"
+        "  /model moonshotai/kimi-k3     Switch to Kimi (example ID)\\n"
+        "  /stats                     Show reported usage data\\n"
+        "  /quit                      Exit\\n"
+        f"Browse and verify current model IDs: {MODEL_CATALOG}\\n"
+        "Model IDs, availability and pricing can change.\\n"
+        "At the shell: python3 chatlab.py --model provider/model-id\\n"
+        "Dry run: python3 chatlab.py --dry-run (no API calls or saved turns)"
+    )
+
 
 def load_env(path: Path) -> None:
     """Read plain KEY=VALUE pairs; existing environment variables take precedence."""
@@ -162,7 +180,11 @@ def run() -> int:
     print("ReloLayer Minimal ChatLab | model:", session["current_model"])
     print("Local conversation:", args.session,
           f"({len(session['messages']) // 2} completed turns)")
-    print("Commands: /model provider/model, /model, /stats, /quit")
+    print("Commands: /model, /help, /stats, /quit")
+    print("Try: /model deepseek/deepseek-chat  or  /model moonshotai/kimi-k3")
+    print("Find current model IDs:", MODEL_CATALOG)
+    if args.dry_run:
+        print("DRY RUN: no API calls and no saved conversation turns.")
     while True:
         try:
             prompt = input("\nYou > ").strip()
@@ -173,6 +195,9 @@ def run() -> int:
             continue
         if prompt in ("/quit", "/exit"):
             break
+        if prompt in ("/help", "/?"):
+            print(help_text())
+            continue
         if prompt == "/model":
             print("Current model:", session["current_model"])
             continue
@@ -193,7 +218,7 @@ def run() -> int:
                 print(" ", row)
             continue
         if prompt.startswith("/"):
-            print("Unknown command. /model, /stats, /quit")
+            print("Unknown command. Type /help for model examples and commands.")
             continue
         payload = build_payload(identity, session, prompt)
         if args.dry_run:

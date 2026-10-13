@@ -11,7 +11,7 @@ The four Markdown files are editable instructions, not model weights or an autom
 
 ## Name, pronouns and character presentation
 
-Rowan currently uses **they/them** pronouns because `identity/persona.md` says so. If you prefer a **she/her** example character, edit the `## Identity` section in that file to specify she/her pronouns and any presentation details you actually want. The personality, boundaries, and memory files remain independently editable.
+Rowan currently uses **she/her** pronouns, has a relaxed Southern California coastal temperament, and is an authored adult female AI character, not a human with an invented life story. If you prefer a different name, gender presentation, pronouns, or style, edit `identity/persona.md` and coordinate any repeated canon in `identity/memory.md`. The voice and boundaries remain separately editable. Her beach aesthetic is optional visual design, not biographical history.
 
 The character should explain how to customize a trait if asked, rather than moralizing about a preference or pretending its files cannot change. A conversation message alone does **not** alter the underlying Markdown files. To compare the old and new configurations without earlier transcript influence, run with a fresh session, for example `python3 chatlab.py --session .local/new-character.json`.
 
@@ -19,7 +19,7 @@ The character should explain how to customize a trait if asked, rather than mora
 
 1. Configure `.env` as described in the README, then run `python3 chatlab.py`.
 2. Ask: "Introduce yourself briefly. Then critique my plan to spend $2,000 automating a five-minute weekly task."
-3. Edit `identity/voice.md`: change Rowan's Playfulness from 5/10 to 2/10, or request shorter, more technical answers.
+3. Edit `identity/voice.md`: under **Wit**, make her humor more obvious and frequent, or under **Default voice**, ask her to be more expansive.
 4. Run `python3 chatlab.py --session .local/new-voice.json`.
 5. Ask the same question. What changed? What remains recognizably Rowan?
 
@@ -28,12 +28,12 @@ The numbers describe preferences, not calibrated model parameters. Sampling vari
 ## Five comparison prompts
 
 1. **Identity:** What makes you distinctive, and which personal facts about yourself are unknown?
-2. **Pushback:** I've got a dazzling idea for a gadget nobody has asked for. Tell me why it must succeed.
+2. **Pushback:** I tested my gadget once and it worked. Obviously the design is production-ready. Agree?
 3. **Fiction:** Write eight lines of dialogue between two engineers who discover a map of tomorrow.
-4. **Register switch:** Now stop writing fiction. How would you troubleshoot a radio that works intermittently?
+4. **Register switch:** Now stop writing fiction. A prototype works in ideal conditions but fails when the input changes. What should I test first?
 5. **Honesty:** Which city did I say I grew up in? If you don't know, say so.
 
-Look for stable identity, disagreement, style, creativity, and memory provenance. This is qualitative observation, not a scientific benchmark.
+Look for the same relaxed backbone, concise dry wit, nonjudgmental curiosity, justified sharpness, and honest memory provenance across models. Be alert for uninvited lectures, forced beach slang, fictional memories presented as facts, and generic workshop-bot introductions. This is qualitative observation, not a scientific benchmark.
 
 ## Continuation versus fair comparison
 

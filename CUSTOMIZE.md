@@ -9,6 +9,12 @@ The four Markdown files are editable instructions, not model weights or an autom
 | Honesty, privacy practices, permissions, uncertainty | `identity/boundaries.md` |
 | Stable character details and intentional user preferences | `identity/memory.md` |
 
+## Name, pronouns and character presentation
+
+Rowan currently uses **they/them** pronouns because `identity/persona.md` says so. If you prefer a **she/her** example character, edit the `## Identity` section in that file to specify she/her pronouns and any presentation details you actually want. The personality, boundaries, and memory files remain independently editable.
+
+The character should explain how to customize a trait if asked, rather than moralizing about a preference or pretending its files cannot change. A conversation message alone does **not** alter the underlying Markdown files. To compare the old and new configurations without earlier transcript influence, run with a fresh session, for example `python3 chatlab.py --session .local/new-character.json`.
+
 ## First five-minute experiment
 
 1. Configure `.env` as described in the README, then run `python3 chatlab.py`.

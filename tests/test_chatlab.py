@@ -16,6 +16,14 @@ class ChatLabTests(unittest.TestCase):
             for name in chatlab.IDENTITY_NAMES:
                 self.assertIn(name, identity)
 
+    def test_operator_help_lists_live_model_examples(self):
+        guide = chatlab.help_text()
+        self.assertIn("/model deepseek/deepseek-chat", guide)
+        self.assertIn("/model moonshotai/kimi-k3", guide)
+        self.assertIn("https://openrouter.ai/models", guide)
+        self.assertIn("/quit", guide)
+        self.assertIn("\n", guide)
+
     def test_missing_identity_fails(self):
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(FileNotFoundError):

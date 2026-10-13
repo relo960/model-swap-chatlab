@@ -19,16 +19,17 @@ This minimal ChatLab demonstrates **manual model selection and visible-context p
 
 Requirements: Python 3.10+ and an [OpenRouter API key](https://openrouter.ai/settings/keys). No third-party Python packages are required.
 
-1. Copy `.env.example` to `.env` and replace the placeholder with your own API key. **Never commit or share your key.**
+1. From the repository root (the folder containing `chatlab.py`), **copy** `.env.example` to `.env`, then add your own OpenRouter key in `.env`. On macOS/Linux: `cp .env.example .env`. Edit with any plain-text editor you prefer. Files beginning with `.` are hidden from normal `ls` and some file browsers. **Never commit or share your key.**
 2. Explore the four editable files in `identity/`: `persona.md`, `voice.md`, `boundaries.md`, and `memory.md`. Follow [Make Rowan your own](CUSTOMIZE.md) for guided edits.
 3. From the repository root, run `python3 chatlab.py` (Windows: `py chatlab.py`).
 4. Chat with **Rowan**, the example character. The conversation is saved locally.
-5. Type `/model provider/model-id`, choosing an exact ID from [OpenRouter's catalog](https://openrouter.ai/models). Continue chatting with the same defined identity and saved conversation.
+5. Type `/help` for model-switching examples. Use `/model provider/model-id`, choosing an exact ID from [OpenRouter's live model catalog](https://openrouter.ai/models). Continue chatting with the same defined identity and saved conversation.
 
 Useful commands:
 
 | Command | Purpose |
 |---|---|
+| `/help` | Show example model IDs, commands, and the model catalog link |
 | `/model` | Show the active model |
 | `/model provider/model-id` | Choose a different model for subsequent replies |
 | `/stats` | Show provider-reported usage data, when available |
@@ -46,7 +47,20 @@ Run the offline tests:
 python3 -m unittest discover -s tests -v
 ```
 
-The example defaults to `openrouter/free` when available. That is a **provider-selected route**, not a fixed model or stable comparison baseline. Choose explicit model IDs for controlled comparisons and check current pricing.
+**Example model switches** (model IDs and provider availability can change):
+
+```text
+/model deepseek/deepseek-chat
+/model moonshotai/kimi-k3
+```
+
+Or choose a model when starting ChatLab:
+
+```bash
+python3 chatlab.py --model deepseek/deepseek-chat
+```
+
+The example defaults to `openrouter/free` when available. That is a **provider-selected route**, not a fixed model or stable comparison baseline. Check the live model catalog for current IDs, availability and pricing before testing. A `--dry-run` only inspects request assembly; omit that flag to make a live API call.
 
 ## Customize Rowan
 
@@ -60,7 +74,7 @@ Conversations are written unencrypted to `.local/session.json`, which is ignored
 
 This is a teaching example, not a secure personal-data vault or production agent. It does **not** include automatic specialist routing, spending limits, conversation truncation, retrieval, memory promotion, or external tools. Long histories may exceed model context limits. The usage display does not calculate or cap costs.
 
-**Testing:** The example has passed six offline tests. Live OpenRouter interoperability still needs a real-key smoke test.
+**Testing:** Offline automated unit and CLI checks run in GitHub Actions. A manual live smoke test successfully called DeepSeek, switched to Kimi, and continued the visible conversation through OpenRouter. This is a connectivity and continuity smoke test, not a comparative quality benchmark; routes and behavior may change.
 
 ## Field notes and evidence
 

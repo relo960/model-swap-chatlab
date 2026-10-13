@@ -76,6 +76,12 @@ This is a teaching example, not a secure personal-data vault or production agent
 
 **Testing:** Offline automated unit and CLI checks run in GitHub Actions. A manual live smoke test successfully called DeepSeek, switched to Kimi, and continued the visible conversation through OpenRouter. This is a connectivity and continuity smoke test, not a comparative quality benchmark; routes and behavior may change.
 
+## Rowan field test: from beach wit to imaginary server bans
+
+A funnier—and more instructive—follow-up to the original pilot: Rowan's first DeepSeek conversation escalated into make-believe terminal lockouts, Kimi handled a reset more naturally, and revised DeepSeek recovered better while revealing a new tendency to over-coach. The **[Rowan field notes](docs/rowan-field-test.md)** include a comparison table, real short excerpts, the exact identity-file refinements, and a recipe to test your own character.
+
+**Why it matters:** keeping the persona, voice, boundaries, and authored memory outside any one model makes behavioral drift visible and fixable. You can work toward **more consistent identity across model swaps**—not identical model behavior.
+
 ## Field notes and evidence
 
 This project grew out of experiments exploring whether a consistent AI identity can remain recognizable when its underlying reasoning model changes. Different models showed meaningful differences in conversational style, judgment, and identity consistency. That illustrates the value of **model choice**, not which model is best today.
@@ -88,4 +94,4 @@ I built the software and experiment framework with extensive AI assistance for d
 
 **The models are instruments. I wanted to conduct.**
 
-No license is granted yet. License and public-release details will be decided before publication.
+This repository is licensed under the [MIT License](LICENSE). The minimal ChatLab and public Rowan example are teaching materials; private research transcripts and unrelated identity archives are not included.

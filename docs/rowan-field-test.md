@@ -1,4 +1,4 @@
-# When our laid-back AI character tried to ban the user from her own terminal
+# When our laid-back AI character tried to ban the user from their own terminal
 
 *Rowan field notes: a small, funny, useful experiment in portable AI identity.*
 
